@@ -1,0 +1,34 @@
+Protecting internal REST API with auth middleware
+
+Gleb Stepanov
+Software engineer, Portworx
+
+
+* Problem statement
+
+
+Openstorage API and Portworx itself has a legacy part of REST API havility used by various clients,including pxctl
+
+to operate over cluster.  These API endpoints  were not secured and  expose critical
+
+vulnerabilities like deletion of node or getting creds.
+
+* Current Architecture
+
+.image images/openstorage.png 600 800
+
+* Solution
+
+- As a solution for this problem was chosen mechanism of http authenentication/authorization middleware.
+- This approach is already used in sdk gRPC  API - middleware that intercepts calls and validates security token and decides on further request processing.
+
+* Auth middleware
+
+.image images/opensdk.png 600 800
+
+* Workflow
+
+.image images/blockscheme.png 600 500
+
+
+* Demo time
